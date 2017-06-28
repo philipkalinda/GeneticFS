@@ -11,10 +11,6 @@ class FeatureSelectionGeneticAlgorithm():
     This is designed to help with feature selection in highly dimensional datasets
     """
     def __init__(self, mutation_rate = 0.001, iterations = 100, pool_size = 50):
-        # imports
-        # import numpy as np
-        # from sklearn.model_selection import cross_val_score, KFold
-        # self initiations
         self.mutation_rate = mutation_rate
         self.iterations = iterations
         self.pool_size = pool_size
