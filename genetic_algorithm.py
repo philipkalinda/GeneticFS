@@ -4,6 +4,7 @@ import time
 from sklearn.model_selection import cross_val_score, KFold
 from sklearn.metrics import accuracy_score, r2_score
 from sklearn.decomposition import PCA
+import matplotlib.pyplot as plt
 
 
 class FeatureSelectionGeneticAlgorithm():
@@ -18,19 +19,28 @@ class FeatureSelectionGeneticAlgorithm():
         self.iterations_results = {}
         self.kf = KFold(n_splits=5)
 
+
     def results(self):
         """Print best results from the fit
         """
         # return iterations_results[str(self.iterations+1)]['pool'][0]
-        return self.pool[0]
-        pass
+        return (self.pool[0], [idx for idx, gene in enumerate(self.pool[0]) if gene==1])
+
+
+    def plot_progress(self):
+        avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
+        plt.plot(avs)
+        plt.show()
+        return
+
 
     def fit(self, model, _type, X, y, cv=True, pca=False):
         """model = sci-kit learn regression/classification model
         X = X input data
-        y = Y output data
+        y = Y output data corresponding to X
+        cv = True/False for cross-validation
+        pca = True/False for principal component analysis
         """
-        # reset data in case run before (iterations_results hoted as a class variable and must be reset when refitting the Algorithm)
 
         self.__init__(self.mutation_rate, self.iterations, self.pool_size)
         
@@ -41,13 +51,11 @@ class FeatureSelectionGeneticAlgorithm():
             s_t = time.time()
             scores = list(); fitness = list(); 
             for dna in self.pool:
-                chosen_idx = [idx for bit, idx in zip(dna,range(X.shape[1])) if bit==1]
+                chosen_idx = [idx for gene, idx in zip(dna, range(X.shape[1])) if gene==1]
                 adj_X = X[:,chosen_idx]
 
                 if pca==True:
-                    # add cumalative sum with pca.explained_variance_ratio_
-                    ######### DEVELOPMENT PENDING ########
-                    adj_X = PCA(n_components=4).fit_transform(adj_X)
+                    adj_X = PCA(n_components=np.where(np.cumsum(PCA(n_components=adj_X.shape[1]).fit(adj_X).explained_variance_ratio_)>0.99)[0][0]).fit_transform(adj_X)
 
                 if _type == 'regression':
                     if cv==True:
@@ -65,8 +73,6 @@ class FeatureSelectionGeneticAlgorithm():
             fitness = [x/sum(scores) for x in scores]
 
             fitness, self.pool, scores = (list(t) for t in zip(*sorted(zip(fitness, [list(l) for l in list(self.pool)], scores),reverse=True)))
-
-            # storage of iteration results
             self.iterations_results['{}'.format(iteration)] = dict()
             self.iterations_results['{}'.format(iteration)]['fitness'] = fitness
             self.iterations_results['{}'.format(iteration)]['pool'] = self.pool
@@ -80,12 +86,12 @@ class FeatureSelectionGeneticAlgorithm():
                     random_split_point = np.random.randint(1,len(dna))
                     next_gen1 = np.concatenate((self.pool[0][:random_split_point], dna[random_split_point:]), axis = 0)
                     next_gen2 = np.concatenate((dna[:random_split_point], self.pool[0][random_split_point:]), axis = 0)
-                    for idx, chromosome in enumerate(next_gen1):
+                    for idx, gene in enumerate(next_gen1):
                         if np.random.random() < self.mutation_rate:
-                            next_gen1[idx] = 1 if chromosome==0 else 0
-                    for idx, chromosome in enumerate(next_gen2):
+                            next_gen1[idx] = 1 if gene==0 else 0
+                    for idx, gene in enumerate(next_gen2):
                         if np.random.random() < self.mutation_rate:
-                            next_gen2[idx] = 1 if chromosome==0 else 0
+                            next_gen2[idx] = 1 if gene==0 else 0
                     new_pool.append(next_gen1)
                     new_pool.append(next_gen2)
                 self.pool = new_pool
