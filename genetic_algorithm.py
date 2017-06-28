@@ -55,7 +55,7 @@ class FeatureSelectionGeneticAlgorithm():
                 adj_X = X[:,chosen_idx]
 
                 if pca==True:
-                    adj_X = PCA(n_components=np.where(np.cumsum(PCA(n_components=adj_X.shape[1]).fit(adj_X).explained_variance_ratio_)>0.99)[0][0]).fit_transform(adj_X)
+                    adj_X = PCA(n_components=np.where(np.cumsum(PCA(n_components=adj_X.shape[1]).fit(adj_X).explained_variance_ratio_)>0.99)[0][0]+1).fit_transform(adj_X)
 
                 if _type == 'regression':
                     if cv==True:
