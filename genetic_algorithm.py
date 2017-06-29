@@ -31,8 +31,8 @@ class FeatureSelectionGeneticAlgorithm():
 
 
     def plot_progress(self):
-        """P
-        lots the progress of the genetic algorithm
+        """
+        Plots the progress of the genetic algorithm
         """
 
         avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
