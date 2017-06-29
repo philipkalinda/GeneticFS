@@ -28,7 +28,10 @@ class FeatureSelectionGeneticAlgorithm():
 
     def plot_progress(self):
         avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
-        plt.plot(avs)
+        avs0 = [np.mean(self.iterations_results[str(x)]['scores'][0]) for x in range(1,101)]
+        plt.plot(avs, label='Pool Average Score')
+        plt.plot(avs0, label='Best Solution Score')
+        plt.legend()
         plt.show()
 
 
