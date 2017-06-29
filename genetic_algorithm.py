@@ -23,7 +23,6 @@ class FeatureSelectionGeneticAlgorithm():
     def results(self):
         """Print best results from the fit
         """
-        # return iterations_results[str(self.iterations+1)]['pool'][0]
         return (self.pool[0], [idx for idx, gene in enumerate(self.pool[0]) if gene==1])
 
 
@@ -31,7 +30,6 @@ class FeatureSelectionGeneticAlgorithm():
         avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
         plt.plot(avs)
         plt.show()
-        return
 
 
     def fit(self, model, _type, X, y, cv=True, pca=False):
@@ -44,15 +42,28 @@ class FeatureSelectionGeneticAlgorithm():
 
         self.__init__(self.mutation_rate, self.iterations, self.pool_size)
         
-        X = np.array(X)
+        is_array = False
+
+        try:
+            X = np.array(X)
+            is_array = True
+        except:
+            continue
+
         self.pool = np.random.randint(0,2,(self.pool_size, X.shape[1]))
 
         for iteration in range(1,self.iterations+1):
             s_t = time.time()
             scores = list(); fitness = list(); 
-            for dna in self.pool:
-                chosen_idx = [idx for gene, idx in zip(dna, range(X.shape[1])) if gene==1]
-                adj_X = X[:,chosen_idx]
+            for chromosome in self.pool:
+                chosen_idx = [idx for gene, idx in zip(chromosome, range(X.shape[1])) if gene==1]
+
+                if is_array==True: 
+                    adj_X = X[:,chosen_idx]
+                elif is_array==False:
+                    adj_X = X.iloc[:,chosen_idx]
+                    pca==False
+
 
                 if pca==True:
                     adj_X = PCA(n_components=np.where(np.cumsum(PCA(n_components=adj_X.shape[1]).fit(adj_X).explained_variance_ratio_)>0.99)[0][0]+1).fit_transform(adj_X)
@@ -82,10 +93,10 @@ class FeatureSelectionGeneticAlgorithm():
 
             if iteration != self.iterations+1:
                 new_pool = []
-                for dna in self.pool[1:int((len(self.pool)/2)+1)]:
-                    random_split_point = np.random.randint(1,len(dna))
-                    next_gen1 = np.concatenate((self.pool[0][:random_split_point], dna[random_split_point:]), axis = 0)
-                    next_gen2 = np.concatenate((dna[:random_split_point], self.pool[0][random_split_point:]), axis = 0)
+                for chromosome in self.pool[1:int((len(self.pool)/2)+1)]:
+                    random_split_point = np.random.randint(1,len(chromosome))
+                    next_gen1 = np.concatenate((self.pool[0][:random_split_point], chromosome[random_split_point:]), axis = 0)
+                    next_gen2 = np.concatenate((chromosome[:random_split_point], self.pool[0][random_split_point:]), axis = 0)
                     for idx, gene in enumerate(next_gen1):
                         if np.random.random() < self.mutation_rate:
                             next_gen1[idx] = 1 if gene==0 else 0
