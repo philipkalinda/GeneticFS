@@ -8,9 +8,11 @@ import matplotlib.pyplot as plt
 
 
 class FeatureSelectionGeneticAlgorithm():
-    """Built to be compatible with sci-kit learn library for both regression and classification models
+    """
+    Built to be compatible with sci-kit learn library for both regression and classification models
     This is designed to help with feature selection in highly dimensional datasets
     """
+
     def __init__(self, mutation_rate = 0.001, iterations = 100, pool_size = 50):
         self.mutation_rate = mutation_rate
         self.iterations = iterations
@@ -21,12 +23,18 @@ class FeatureSelectionGeneticAlgorithm():
 
 
     def results(self):
-        """Print best results from the fit
         """
+        Print best results from the fit
+        """
+
         return (self.pool[0], [idx for idx, gene in enumerate(self.pool[0]) if gene==1])
 
 
     def plot_progress(self):
+        """P
+        lots the progress of the genetic algorithm
+        """
+
         avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
         avs0 = [np.mean(self.iterations_results[str(x)]['scores'][0]) for x in range(1,101)]
         plt.plot(avs, label='Pool Average Score')
@@ -36,7 +44,8 @@ class FeatureSelectionGeneticAlgorithm():
 
 
     def fit(self, model, _type, X, y, cv=True, pca=False):
-        """model = sci-kit learn regression/classification model
+        """
+        model = sci-kit learn regression/classification model
         X = X input data
         y = Y output data corresponding to X
         cv = True/False for cross-validation
