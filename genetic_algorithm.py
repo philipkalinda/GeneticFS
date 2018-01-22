@@ -2,7 +2,7 @@
 import numpy as np
 import time
 from sklearn.model_selection import cross_val_score, KFold
-from sklearn.metrics import accuracy_score, r2_score
+from sklearn.metrics import f1_score, r2_score
 from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 
@@ -88,9 +88,9 @@ class FeatureSelectionGeneticAlgorithm():
 
                 elif _type == 'classification':
                     if cv==True:
-                        score = np.mean(cross_val_score(model, adj_X, y, scoring='accuracy', cv=self.kf))
+                        score = np.mean(cross_val_score(model, adj_X, y, scoring='f1', cv=self.kf))
                     else:
-                        score = accuracy_score(y, model.fit(adj_X,y).predict(adj_X))
+                        score = f1_score(y, model.fit(adj_X,y).predict(adj_X))
 
                 scores.append(score)
             fitness = [x/sum(scores) for x in scores]
