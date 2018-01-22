@@ -60,7 +60,7 @@ class FeatureSelectionGeneticAlgorithm():
             X = np.array(X)
             is_array = True
         except:
-            continue
+            X = X
 
         self.pool = np.random.randint(0,2,(self.pool_size, X.shape[1]))
 
