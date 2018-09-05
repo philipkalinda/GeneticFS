@@ -46,6 +46,7 @@ class FeatureSelectionGeneticAlgorithm():
     def fit(self, model, _type, X, y, cv=True, pca=False):
         """
         model = sci-kit learn regression/classification model
+        _type = type of model entered STR (eg.'regression' or 'classification')
         X = X input data
         y = Y output data corresponding to X
         cv = True/False for cross-validation
