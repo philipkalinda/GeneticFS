@@ -36,6 +36,12 @@ $ pip install matplotlib
 $ pip install sklearn
 ```
 
+Install the package
+
+```sh
+$ pip install geneticfs
+```
+
 #### How to Use
 Regression Model:
 ```py
