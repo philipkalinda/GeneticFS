@@ -1,3 +1,3 @@
 
 # __init__.py file
-from geneticfs.algortihm import GeneticFS
+from geneticfs.algorithm import GeneticFS
