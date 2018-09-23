@@ -5,7 +5,7 @@
 GeneticFS is a library for feature selection in Machine Learning using a Genetic Algorithm as an optimisation method.
 More about the development and tests related to the package are explained [HERE](http://www.philipkalinda.com/ds8)
 
-[![Build Status](https://api.travis-ci.org/philipkalinda/GeneticFS.svg?branch=master)](https://travis-ci.org/philipkalinda/GeneticFS/)
+[![Build Status](https://travis-ci.org/philipkalinda/GeneticFS.svg?branch=master)](https://travis-ci.org/philipkalinda/GeneticFS)
 
 # New Features!
 
