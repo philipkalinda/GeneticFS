@@ -9,8 +9,6 @@ More about the development and tests related to the package are explained [HERE]
 
 [![PyPI version](https://badge.fury.io/py/geneticfs.svg)](https://badge.fury.io/py/geneticfs)
 
-[![codecov](https://codecov.io/gh/philipkalinda/GeneticFS/branch/master/graph/badge.svg)](https://codecov.io/gh/philipkalinda/GeneticFS)
-
 
 # New Features!
 
