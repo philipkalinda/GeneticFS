@@ -1,4 +1,4 @@
-# genetic_algorithm
+# GeneticFS
 
 <div align="center">
   <a href="http://www.philipkalinda.com"><img src="http://www.philipkalinda.com/uploads/8/6/5/4/86541022/untitled-1.png"><br></a>
