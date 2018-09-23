@@ -38,7 +38,7 @@ $ pip install sklearn
 #### How to Use
 Regression Model:
 ```py
-from geneticfs.algorithm import GeneticFS
+from geneticfs import GeneticFS
 from sklearn.linear_model import LinearRegression
 
 lin_model = LinearRegression()
@@ -56,7 +56,7 @@ gfs.plot_progress()
 
 Classification Model:
 ```py
-from geneticfs.algorithm import GeneticFS
+from geneticfs import GeneticFS
 from sklearn.linear_model import LogisticRegression
 
 log_model = LogisticRegression()
