@@ -8,7 +8,7 @@ setup(
   author = 'Philip Kalinda',
   author_email = 'philipkalinda@gmail.com',
   url = 'https://philipkalinda.com',
-  download_url = 'https://github.com/philipkalinda/GeneticFS/archive/v_01.tar.gz',
+  download_url = 'https://github.com/philipkalinda/GeneticFS/archive/v_011.tar.gz',
   keywords = ['Genetic Algorithm', 'Algorithm', 'Machine Learning', 'Feature Selection', 'Optimisation'],
   install_requires=[
           'numpy',
