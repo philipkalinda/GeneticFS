@@ -12,7 +12,6 @@ setup(
   keywords = ['Genetic Algorithm', 'Algorithm', 'Machine Learning', 'Feature Selection', 'Optimisation'],
   install_requires=[
           'numpy',
-          'time',
           'sklearn',
           'matplotlib'
       ],
