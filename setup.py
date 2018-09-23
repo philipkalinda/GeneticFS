@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'geneticfs',
   packages = ['geneticfs'],
-  version = '0.11',
+  version = '0.1',
   license='MIT',
   description = 'Genetic Algorithm to optimise feature selection in Machine Learning',
   author = 'Philip Kalinda',
   author_email = 'philipkalinda@gmail.com',
   url = 'https://philipkalinda.com',
-  download_url = 'https://github.com/philipkalinda/GeneticFS/archive/v_011.tar.gz',
+  download_url = 'https://github.com/philipkalinda/GeneticFS/archive/v_01.tar.gz',
   keywords = ['Genetic Algorithm', 'Algorithm', 'Machine Learning', 'Feature Selection', 'Optimisation'],
   install_requires=[
           'numpy',
