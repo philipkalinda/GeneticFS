@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
   name = 'geneticfs',
   packages = ['geneticfs'],
-  version = '0.1',
+  version = '0.11',
   license='MIT',
   description = 'Genetic Algorithm to optimise feature selection in Machine Learning',
   author = 'Philip Kalinda',
