@@ -7,6 +7,8 @@ More about the development and tests related to the package are explained [HERE]
 
 [![Build Status](https://travis-ci.org/philipkalinda/GeneticFS.svg?branch=master)](https://travis-ci.org/philipkalinda/GeneticFS)
 
+[![PyPI version](https://badge.fury.io/py/geneticfs.svg)](https://badge.fury.io/py/geneticfs)
+
 # New Features!
 
   - Replaced accuracy score for classification models with F1 score
