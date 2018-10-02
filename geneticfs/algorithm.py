@@ -89,7 +89,7 @@ class GeneticFS():
 
                 elif _type == 'classification':
                     if cv==True:
-                        score = np.mean(cross_val_score(model, adj_X, y, scoring='f1', cv=self.kf))
+                        score = np.mean(cross_val_score(model, adj_X, y, scoring='f1_weighted', cv=self.kf))
                     else:
                         score = f1_score(y, model.fit(adj_X,y).predict(adj_X))
 
