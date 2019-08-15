@@ -35,8 +35,8 @@ class GeneticFS():
         Plots the progress of the genetic algorithm
         """
 
-        avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,101)]
-        avs0 = [np.mean(self.iterations_results[str(x)]['scores'][0]) for x in range(1,101)]
+        avs = [np.mean(self.iterations_results[str(x)]['scores']) for x in range(1,iterations+1)]
+        avs0 = [np.mean(self.iterations_results[str(x)]['scores'][0]) for x in range(1,iterations+1)]
         plt.plot(avs, label='Pool Average Score')
         plt.plot(avs0, label='Best Solution Score')
         plt.legend()
@@ -126,4 +126,3 @@ class GeneticFS():
                     e_t = time.time()
                     print('Iteration {} Complete [Time Taken For Last Iteration: {} Seconds]'.format(iteration,round(e_t-s_t,2)))
             
-        
