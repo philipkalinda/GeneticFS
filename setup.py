@@ -1,22 +1,21 @@
 from distutils.core import setup
 setup(
-  name = 'geneticfs',
-  packages = ['geneticfs'],
-  version = '0.03',
+  name = 'StackerPy',
+  packages = ['stackerpy'],
+  version = '0.01',
   license='MIT',
-  description = 'Genetic Algorithm to optimise feature selection in Machine Learning',
+  description = 'Machine Learning model stacking with blending capabilities (Compatible with Scikit-Learn)',
   author = 'Philip Kalinda',
   author_email = 'philipkalinda@gmail.com',
   url = 'https://philipkalinda.com',
-  download_url = 'https://github.com/philipkalinda/GeneticFS/archive/v_003.tar.gz',
-  keywords = ['Genetic Algorithm', 'Algorithm', 'Machine Learning', 'Feature Selection', 'Optimisation'],
+  download_url = 'https://github.com/philipkalinda/stackerpy/archive/v_001.tar.gz',
+  keywords = ['Stacking', 'Scikit-Learn', 'sklearn', 'Algorithm', 'Machine Learning', 'Blending', 'Optimisation'],
   install_requires=[
           'numpy',
           'sklearn',
-          'matplotlib'
       ],
   classifiers=[
-    'Development Status :: 3 - Alpha',
+    'Development Status :: 1 - Alpha',
     'Intended Audience :: Developers',
     'Topic :: Software Development :: Build Tools',
     'License :: OSI Approved :: MIT License',
